@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotation Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* 设置全局字体 */
+            background-color: #f4f4f4; /* 背景颜色 */
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3; /* 标题颜色 */
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 500px;
+            margin: auto;
+        }
+        textarea {
+            width: 100%;
+            box-sizing: border-box; /* 让宽度包含padding和border */
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            resize: none; /* 禁止调整大小 */
+        }
+        button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px; /* 在按钮上方添加空间 */
+        }
+        button:hover {
+            background-color: #004494; /* 按钮悬停效果 */
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #0056b3;
+            margin-top: 5px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        li:hover {
+            background: #004494;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 10px 15px;
+        }
+        h2 {
+            color: #0056b3;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Input Quotation Data</h1>
+    <form action="/" method="post">
+        <textarea name="quotationData" rows="20" placeholder="Enter quotation data here..."></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if file_name %}
+        <h2>Generated Files:</h2>
+        <ul>
+            <li><a href="{{ url_for('download_file', filename=file_name + '.docx') }}">Download DOCX</a></li>
+            <li><a href="{{ url_for('download_file', filename=file_name + '.json') }}">Download JSON</a></li>
+            <li><a href="{{ url_for('download_file', filename=file_name + '.csv') }}">Download CSV</a></li>
+        </ul>
+    {% endif %}
+</body>
+</html>
